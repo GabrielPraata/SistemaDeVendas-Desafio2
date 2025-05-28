@@ -3,6 +3,7 @@ package com.prata.SistemaDeEvento.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_bloco")
@@ -62,5 +63,16 @@ public class Bloco {
 
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Bloco bloco)) return false;
+        return Objects.equals(getId(), bloco.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 }

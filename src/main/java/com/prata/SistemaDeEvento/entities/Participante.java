@@ -4,6 +4,7 @@ package com.prata.SistemaDeEvento.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -56,5 +57,16 @@ public class Participante {
 
    public Set<Atividade> getAtividades() {
       return atividades;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (!(o instanceof Participante that)) return false;
+       return Objects.equals(getId(), that.getId());
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hashCode(getId());
    }
 }

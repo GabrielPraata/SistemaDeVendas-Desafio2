@@ -2,10 +2,7 @@ package com.prata.SistemaDeEvento.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_atividade")
@@ -92,5 +89,16 @@ public class Atividade {
 
     public Set<Participante> getParticipantes() {
         return participantes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Atividade atividade)) return false;
+        return Objects.equals(getId(), atividade.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 }
